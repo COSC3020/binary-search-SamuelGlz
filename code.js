@@ -1,42 +1,32 @@
-//Not fully working yet
-
 function binarySearch(list, element) {
-
-    if (list.length > 0 ){
-        mid = Math.floor(list.length /2)
-
-        if (list[mid] == element){
-            return mid
-        }
-
-        if(list.length == 1 && list[mid] != element){
-            return -1;
-        }
-
-        //Problem when the element is greater than mid
-
-        else {
-            if (list[mid] > element){
-                ret = binarySearch(list.slice(0, mid), element)
-                if (ret == -1 ){
-                    return  -1
-                }
-                return  ret
+    function InnerBinSer(list, element, LocSum){
+    
+        if (list.length > 0 ){
+            mid = Math.floor(list.length /2)
+            //console.log("The element in the middle is " + list[mid] + " looking for " + element)
+            if (list[mid] == element){
+                LocSum = LocSum + mid
+                //console.log("              (found) returning: " + LocSum)
+                return LocSum
             }
+            if(list.length == 1 && list[mid] != element){
+                LocSum = -1
+                //console.log("              (not found) returning: " + LocSum)
+                return LocSum
+            }
+    
             else {
-                ret = binarySearch(list.slice(mid, list.length), element)
-                if (ret == -1 ){
-                    return  -1
+                if (list[mid] > element){
+                    //console.log("mid " + list[mid] + " is higher than " + element + " Current Location Sum is " + LocSum )
+                    return InnerBinSer(list.slice(0, mid), element, LocSum)
                 }
-                console.log(mid + ret + " value of mid + ret " + mid + " " + ret)
-                return  mid + ret
+                else {
+                    //console.log("mid is lower than " + element + " Current Location Sum is " + LocSum )
+                    return InnerBinSer(list.slice((mid + 1), list.length), element, (LocSum + 1 + mid))
+                    }
+                }
             }
-        }
-    }
-
-    return -1;
+        return LocSum
+        }    
+return InnerBinSer(list, element, 0)
 }
-
-console.log(" 7 was " + binarySearch([1,2,3,4,5,6,8], 7) + " " + [1,2,3,4,5,6,8]);
-console.log(" 8 was " + binarySearch([1,2,3,4,5,6,8], 8) + " " + [1,2,3,4,5,6,8]);
-console.log(" 2 was " + binarySearch([1,2,3,4,5,6,8], 2) + " " + [1,2,3,4,5,6,8]);
