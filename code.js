@@ -26,7 +26,20 @@ function binarySearch(list, element) {
                     }
                 }
             }
-        return LocSum
+        else {
+        return -1;
+        }
         }    
 return InnerBinSer(list, element, 0)
 }
+
+/*
+console.log(binarySearch([1,2,3,4,5,6,7], 9))
+console.log(binarySearch([1,2,3,4,5,6,7], 2))
+console.log(binarySearch([1,2,3,4,5,6,7], -1))
+console.log(binarySearch([1,2,3,4,5,6,7], 6))
+console.log(binarySearch([1,2,3,4,5,6,7], 3))
+console.log(binarySearch([4,4],4))
+console.log(binarySearch([0,0],0))
+console.log(binarySearch([],4))
+*/
