@@ -4,7 +4,7 @@ const jsc = require('jsverify');
 eval(fs.readFileSync('code.js')+'');
 
 const testSearch =
-    jsc.forall("just trying something", function(arr) {
+    jsc.forall("array nat", function(arr) {
         if(arr.length > 0) {
             arr.sort(function(a, b) 
                 { return a - b; });
